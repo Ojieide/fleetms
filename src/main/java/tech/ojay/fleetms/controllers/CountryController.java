@@ -34,7 +34,7 @@ public class CountryController {
 	
 	@PostMapping("/countries/insertNew")
 	public String insertNew(Country country) {
-		countryService.save(country);
+		countryService.store(country);
 		return "redirect:/countries";
 	}
 	
@@ -46,7 +46,7 @@ public class CountryController {
 	
 	@RequestMapping(value="/countries/update", method={RequestMethod.PUT, RequestMethod.GET})
 	public String update(Country country) {
-		countryService.save(country);
+		countryService.store(country);
 		return "redirect:/countries";
 	}
 

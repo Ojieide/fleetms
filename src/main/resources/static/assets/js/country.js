@@ -5,11 +5,11 @@ $('document').ready(function(){
 		var href= $(this).attr('href');	
 		$.get(href, function(country){
 			$('#idEdit').val(country.id);
-			$('#nameEdit').val(country.name.replace(/,/g, ''));
-			$('#capitalEdit').val(country.capital.replace(/,/g, ''));
-			$('#codeEdit').val(country.code.replace(/,/g, ''));
-			$('#continentEdit').val(country.continent.replace(/,/g, ''));
-			$('#nationalityEdit').val(country.nationality.replace(/,/g, ''))
+			$('#nameEdit').val(country.name);
+			$('#capitalEdit').val(country.capital);
+			$('#codeEdit').val(country.code);
+			$('#continentEdit').val(country.continent);
+			$('#nationalityEdit').val(country.nationality);
 		});
 		$('#editModal').modal();
 	});

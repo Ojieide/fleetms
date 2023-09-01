@@ -20,7 +20,7 @@ public class CountryService {
 	}
 	
 	//Insert new country
-	public void save(Country country) {
+	public void store(Country country) {
 		countryRepository.save(country);
 	}
 	
