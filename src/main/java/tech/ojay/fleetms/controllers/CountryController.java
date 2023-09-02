@@ -49,5 +49,11 @@ public class CountryController {
 		countryService.store(country);
 		return "redirect:/countries";
 	}
+	
+	@RequestMapping(value="/countries/deleteCountryById/{id}", method={RequestMethod.DELETE, RequestMethod.GET})
+	public String delete(@PathVariable int id) {
+		countryService.delete(id);
+		return "redirect:/countries";
+	}
 
 }

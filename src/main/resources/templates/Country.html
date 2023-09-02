@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Global / Country Template</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -436,7 +437,6 @@
 			
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List of Countries</h5>
 		      <table class="table">
 				  <thead>
 					  <tr>
@@ -455,7 +455,9 @@
 						  <td th:text="${country.code}">
 						  <td>
 							  <div class="btn-group">
-								  <a class="btn btn-primary" th:href="@{/countries/fetchCountryById/{id}(id=${country.id})}" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+								  <a class="btn btn-primary" th:href="@{/countries/fetchCountryById/{id}(id=${country.id})}" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></a>
+								  <a class="btn btn-success" id="detailsBtn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-caret-square-o-down"></i></a>
+								  <a class="btn btn-danger" th:href="@{/countries/deleteCountryById/{id}(id=${country.id})}" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
 							  </div>
 						  </td>
 					  </tr>
@@ -554,6 +556,26 @@
     </div>
   </div>
  </form>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this data?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="btn btn-primary" id="confirmDeleteBtn">Yes</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>
 
   <!-- ======= Footer ======= -->
