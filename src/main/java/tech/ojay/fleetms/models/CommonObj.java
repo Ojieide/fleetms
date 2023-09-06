@@ -11,18 +11,13 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class CommonObj extends Audit<String> {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Integer id;
 	private String description;
 	private String details;
-	public CommonObj(Integer id, String description, String details) {
-		this.id = id;
-		this.description = description;
-		this.details = details;
-	}
-	public CommonObj() {
-	}
 	public Integer getId() {
 		return id;
 	}
@@ -41,8 +36,4 @@ public class CommonObj extends Audit<String> {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	@Override
-	public String toString() {
-		return "CommonObj [id=" + id + ", description=" + description + ", details=" + details + "]";
-	} 
 }
