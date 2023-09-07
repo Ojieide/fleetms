@@ -3,9 +3,9 @@ $('document').ready(function() {
 	$('.table .btn-primary').on('click',function(event){		
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(state, status){
+		$.get(href, function(state){
 			$('#idEdit').val(state.id);
-			$('#ddlCountryEdit').val(state.countryid);
+			$('#countryEdit').val(state.countryid);
 			$('#capitalEdit').val(state.capital);
 			$('#codeEdit').val(state.code);
 			$('#nameEdit').val(state.name);
@@ -17,9 +17,9 @@ $('document').ready(function() {
 	$('.table #detailsBtn').on('click',function(event) {
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(state, status){
+		$.get(href, function(state){
 			$('#idDetails').val(state.id);
-			$('#ddlCountryDetails').val(state.countryid);
+			$('#countryDetails').val(state.countryid);
 			$('#capitalDetails').val(state.capital);
 			$('#codeDetails').val(state.code);		
 			$('#nameDetails').val(state.name);

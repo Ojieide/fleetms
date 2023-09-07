@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Accounts / Invoice Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -427,13 +429,40 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">Add Invoice</button>
+    
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
+			
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List of Invoices</h5>
+		      <table class="table">
+				  <thead>
+					  <tr>
+						  <th>Id</th>
+						  <th>Invoice Date</th>
+						  <th>Client</th>
+						  <th>Remarks</th>
+						  <th>Actions</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr th:each="invoice:${invoices}">
+						  <td th:text="${invoice.id}">
+						  <td th:text="${invoice.invoiceDate}">
+						  <td th:text="${invoice.client.name}">
+						  <td th:text="${invoice.remarks}">
+						  <td>
+							  <div class="btn-group">
+								  <a class="btn btn-primary" th:href="@{/invoices/fetchInvoiceById/{id}(id=${invoice.id})}" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></a>
+								  <a class="btn btn-success" th:href="@{/invoices/fetchInvoiceById/{id}(id=${invoice.id})}" id="detailsBtn" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="fa fa-caret-square-o-down"></i></a>
+								  <a class="btn btn-danger" th:href="@{/invoices/deleteInvoiceById/{id}(id=${invoice.id})}" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+							  </div>
+						  </td>
+					  </tr>
+				  </tbody>
+			  </table>
             </div>
           </div>
 
@@ -442,6 +471,182 @@
     </section>
 
   </main><!-- End #main -->
+  
+ <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertModalLabel">New Invoice</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/invoices/insertNew}" method="post">
+          <div class="form-group">
+            <label for="idInsert" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idInsert" name="id" disabled>
+          </div>
+          <div class="form-group">
+		    <label for="clientInsert" class="col-form-label">Client:</label>
+			    <select class="form-control" id="clientInsert" name="clientid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="client : ${clients}"
+				        th:value="${client.id}"
+				        th:text="${client.name}">
+				   </option>
+			    </select>				    
+		  </div>
+          <div class="form-group">
+            <label for="invoiceDateInsert" class="col-form-label">Invoice Date:</label>
+            <input type="date" class="form-control" id="invoiceDateInsert" name="invoiceDate">
+          </div>
+          <div class="form-group">
+		    <label for="invoiceStatusInsert" class="col-form-label">Invoice Status:</label>
+			    <select class="form-control" id="invoiceStatusInsert" name="invoicestatusid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="invoicestatus : ${invoicestatus}"
+				        th:value="${invoicestatus.id}"
+				        th:text="${invoicestatus.description}">
+				   </option>
+			    </select>
+          </div>
+          <div class="form-group">
+            <label for="remarksInsert" class="col-form-label">Remarks:</label>
+            <input type="text" class="form-control" id="remarksInsert" name="remarks">
+          </div>
+      </div>
+      <div class="modal-footer">
+		  <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+ <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Update Record</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/invoices/update}" method="put">
+          <div class="form-group">
+            <label for="idEdit" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idEdit" name="id" readonly>
+          </div>
+          <div class="form-group">
+		    <label for="clientEdit" class="col-form-label">Client:</label>
+			    <select class="form-control" id="clientEdit" name="clientid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="client : ${clients}"
+				        th:value="${client.id}"
+				        th:text="${client.name}">
+				   </option>
+			    </select>				    
+		  </div>
+          <div class="form-group">
+            <label for="invoiceDateEdit" class="col-form-label">Invoice Date:</label>
+            <input type="date" class="form-control" id="invoiceDateEdit" name="invoiceDate">
+          </div>
+          <div class="form-group">
+		    <label for="invoiceStatusEdit" class="col-form-label">Invoice Status:</label>
+			    <select class="form-control" id="invoiceStatusEdit" name="invoicestatusid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="invoicestatus : ${invoicestatus}"
+				        th:value="${invoicestatus.id}"
+				        th:text="${invoicestatus.description}">
+				   </option>
+			    </select>
+          </div>
+          <div class="form-group">
+            <label for="remarksEdit" class="col-form-label">Remarks:</label>
+            <input type="text" class="form-control" id="remarksEdit" name="remarks">
+          </div>
+      </div>
+      <div class="modal-footer">
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+ <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsModalLabel">Invoice Details</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="idDetails" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idDetails" name="id" readonly>
+          </div>
+          <div class="form-group">
+		    <label for="clientDetails" class="col-form-label">Client:</label>
+			    <select class="form-control" id="clientDetails" name="clientid" disabled>
+			       <option>-SELECT-</option>			    
+			       <option th:each="client : ${clients}"
+				        th:value="${client.id}"
+				        th:text="${client.name}">
+				   </option>
+			    </select>				    
+		  </div>
+          <div class="form-group">
+            <label for="invoiceDateDetails" class="col-form-label">Invoice Date:</label>
+            <input type="date" class="form-control" id="invoiceDateDetails" name="invoiceDate" readonly>
+          </div>
+          <div class="form-group">
+		    <label for="invoiceStatusDetails" class="col-form-label">Invoice Status:</label>
+			    <select class="form-control" id="invoiceStatusDetails" name="invoicestatusid" disabled>
+			       <option>-SELECT-</option>			    
+			       <option th:each="invoicestatus : ${invoicestatus}"
+				        th:value="${invoicestatus.id}"
+				        th:text="${invoicestatus.description}">
+				   </option>
+			    </select>
+          </div>
+          <div class="form-group">
+            <label for="remarksDetails" class="col-form-label">Remarks:</label>
+            <input type="text" class="form-control" id="remarksDetails" name="remarks" readonly>
+          </div>
+      </div>
+      <div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this data?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="btn btn-primary" id="confirmDeleteBtn">Yes</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -464,6 +669,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/invoice.js"></script>
 
 </body>
 
