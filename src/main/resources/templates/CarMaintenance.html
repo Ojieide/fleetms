@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Cars / Car Maintenance Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -427,13 +429,40 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">Add Car Maintenance</button>
+    
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
+			
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List of Cars Under Maintenance</h5>
+		      <table class="table">
+				  <thead>
+					  <tr>
+						  <th>Id</th>
+						  <th>Car</th>
+						  <th>Start Date</th>
+						  <th>Remarks</th>
+						  <th>Actions</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr th:each="carmaintenance:${carmaintenance}">
+						  <td th:text="${carmaintenance.id}">
+						  <td th:text="${carmaintenance.car.name}">
+						  <td th:text="${carmaintenance.startDate}">
+						  <td th:text="${carmaintenance.remarks}">
+						  <td>
+							  <div class="btn-group">
+								  <a class="btn btn-primary" th:href="@{/carmaintenance/fetchCarMaintenanceById/{id}(id=${carmaintenance.id})}" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></a>
+								  <a class="btn btn-success" th:href="@{/carmaintenance/fetchCarMaintenanceById/{id}(id=${carmaintenance.id})}" id="detailsBtn" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="fa fa-caret-square-o-down"></i></a>
+								  <a class="btn btn-danger" th:href="@{/carmaintenance/deleteCarMaintenanceById/{id}(id=${carmaintenance.id})}" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+							  </div>
+						  </td>
+					  </tr>
+				  </tbody>
+			  </table>
             </div>
           </div>
 
@@ -442,6 +471,220 @@
     </section>
 
   </main><!-- End #main -->
+  
+ <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertModalLabel">New Car Maintenance</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/carmaintenance/insertNew}" method="post">
+          <div class="form-group">
+            <label for="idInsert" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idInsert" name="id" disabled>
+          </div>
+          <div class="form-group">
+		    <label for="carInsert" class="col-form-label">Car:</label>
+			    <select class="form-control" id="carInsert" name="carid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="car : ${cars}"
+				        th:value="${car.id}"
+				        th:text="${car.description}">
+				   </option>
+			    </select>	
+          </div>
+          <div class="form-group">
+            <label for="startDateInsert" class="col-form-label">Start Date:</label>
+            <input type="date" class="form-control" id="startDateInsert" name="startDate">
+          </div>
+          
+          <div class="form-group">
+            <label for="remarksInsert" class="col-form-label">Remarks:</label>
+            <textarea class="form-control" id="remarksInsert" name="remarks" rows="3"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="endDateInsert" class="col-form-label">End Date:</label>
+            <input type="date" class="form-control" id="endDateInsert" name="endDate"></input>
+          </div> 
+         <div class="form-group">
+		    <label for="supplierInsert" class="col-form-label">Supplier: </label>
+			    <select class="form-control" id="supplierInsert" name="supplierid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="supplier : ${suppliers}"
+				        th:value="${supplier.id}"
+				        th:text="${supplier.name}">
+				   </option>
+			    </select>				    
+		  </div>       
+          <div class="form-group">
+            <label for="priceInsert" class="col-form-label">Price:</label>
+            <input type="text" class="form-control" id="priceInsert" name="price">
+          </div>        
+      </div>
+      <div class="modal-footer">
+		  <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+ <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Update Record</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form th:action="@{/carmaintenance/update}" method="put">
+          <div class="form-group">
+            <label for="idEdit" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idEdit" name="id" readonly>
+          </div>
+          <div class="form-group">
+		    <label for="carEdit" class="col-form-label">Car:</label>
+			    <select class="form-control" id="carEdit" name="carid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="car : ${cars}"
+				        th:value="${car.id}"
+				        th:text="${car.description}">
+				   </option>
+			    </select>	
+          </div>
+          <div class="form-group">
+            <label for="startDateEdit" class="col-form-label">Start Date:</label>
+            <input type="date" class="form-control" id="startDateEdit" name="startDate">
+          </div>
+          
+          <div class="form-group">
+            <label for="remarksEdit" class="col-form-label">Remarks:</label>
+            <textarea class="form-control" id="remarksEdit" name="remarks" rows="3"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="endDateEdit" class="col-form-label">End Date:</label>
+            <input type="date" class="form-control" id="endDateEdit" name="endDate"></input>
+          </div> 
+         <div class="form-group">
+		    <label for="supplierEdit" class="col-form-label">Supplier: </label>
+			    <select class="form-control" id="supplierEdit" name="supplierid">
+			       <option>-SELECT-</option>			    
+			       <option th:each="supplier : ${suppliers}"
+				        th:value="${supplier.id}"
+				        th:text="${supplier.name}">
+				   </option>
+			    </select>				    
+		  </div>       
+          <div class="form-group">
+            <label for="priceEdit" class="col-form-label">Price:</label>
+            <input type="text" class="form-control" id="priceEdit" name="price">
+          </div> 
+      </div>
+      <div class="modal-footer">
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+ <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsModalLabel">Car Maintenance Details</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="idDetails" class="col-form-label">Id:</label>
+            <input type="text" class="form-control" id="idDetails" name="id" readonly>
+          </div>
+          <div class="form-group">
+		    <label for="carDetails" class="col-form-label">Car:</label>
+			    <select class="form-control" id="carDetails" name="carid" disabled>
+			       <option>-SELECT-</option>			    
+			       <option th:each="car : ${cars}"
+				        th:value="${car.id}"
+				        th:text="${car.description}">
+				   </option>
+			    </select>	
+          </div>
+          <div class="form-group">
+            <label for="startDateDetails" class="col-form-label">Start Date:</label>
+            <input type="date" class="form-control" id="startDateDetails" name="startDate" readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="remarksDetails" class="col-form-label">Remarks:</label>
+            <textarea class="form-control" id="remarksDetails" name="remarks" rows="3" readonly></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="endDateDetails" class="col-form-label">End Date:</label>
+            <input type="date" class="form-control" id="endDateDetails" name="endDate" readonly></input>
+          </div> 
+         <div class="form-group">
+		    <label for="supplierDetails" class="col-form-label">Supplier: </label>
+			    <select class="form-control" id="supplierDetails" name="supplierid" disabled>
+			       <option>-SELECT-</option>			    
+			       <option th:each="supplier : ${suppliers}"
+				        th:value="${supplier.id}"
+				        th:text="${supplier.name}">
+				   </option>
+			    </select>				    
+		  </div>       
+          <div class="form-group">
+            <label for="priceDetails" class="col-form-label">Price:</label>
+            <input type="text" class="form-control" id="priceDetails" name="price" readonly>
+          </div> 
+          <div class="form-group">
+            <label for="updatedbyDetails" class="col-form-label">Updated By:</label>
+            <input type="text" class="form-control" id="updatedbyDetails" name="updatedby" readonly>
+          </div>
+          <div class="form-group">
+            <label for="updateddateDetails" class="col-form-label">Updated Date:</label>
+            <input type="text" class="form-control" id="updateddateDetails" name="updateddate" readonly>
+          </div>
+      </div>
+      <div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this data?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="btn btn-primary" id="confirmDeleteBtn">Yes</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -464,6 +707,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/carmaintenance.js"></script>
 
 </body>
 

@@ -72,5 +72,138 @@ public class Car {
 	@JoinColumn(name="locationid", insertable=false, updatable=false)	
 	private Location currentLocation;
 	private Integer locationid;
-	private String remarks;	
+	private String remarks;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public CarType getCarType() {
+		return carType;
+	}
+	public void setCarType(CarType carType) {
+		this.carType = carType;
+	}
+	public Integer getCartypeid() {
+		return cartypeid;
+	}
+	public void setCartypeid(Integer cartypeid) {
+		this.cartypeid = cartypeid;
+	}
+	public String getCarNumber() {
+		return carNumber;
+	}
+	public void setCarNumber(String carNumber) {
+		this.carNumber = carNumber;
+	}
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+	public Date getAcquisitionDate() {
+		return acquisitionDate;
+	}
+	public void setAcquisitionDate(Date acquisitionDate) {
+		this.acquisitionDate = acquisitionDate;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public CarBrand getCarBrand() {
+		return carBrand;
+	}
+	public void setCarBrand(CarBrand carBrand) {
+		this.carBrand = carBrand;
+	}
+	public Integer getCarbrandid() {
+		return carbrandid;
+	}
+	public void setCarbrandid(Integer carbrandid) {
+		this.carbrandid = carbrandid;
+	}
+	public String getPower() {
+		return power;
+	}
+	public void setPower(String power) {
+		this.power = power;
+	}
+	public String getFuelCapacity() {
+		return fuelCapacity;
+	}
+	public void setFuelCapacity(String fuelCapacity) {
+		this.fuelCapacity = fuelCapacity;
+	}
+	public CarStatus getCarStatus() {
+		return carStatus;
+	}
+	public void setCarStatus(CarStatus carStatus) {
+		this.carStatus = carStatus;
+	}
+	public Integer getCarstatusid() {
+		return carstatusid;
+	}
+	public void setCarstatusid(Integer carstatusid) {
+		this.carstatusid = carstatusid;
+	}
+	public String getNetWeight() {
+		return netWeight;
+	}
+	public void setNetWeight(String netWeight) {
+		this.netWeight = netWeight;
+	}
+	public Personnel getInCharge() {
+		return inCharge;
+	}
+	public void setInCharge(Personnel inCharge) {
+		this.inCharge = inCharge;
+	}
+	public Integer getPersonnelid() {
+		return personnelid;
+	}
+	public void setPersonnelid(Integer personnelid) {
+		this.personnelid = personnelid;
+	}
+	public CarModel getCarModel() {
+		return carModel;
+	}
+	public void setCarModel(CarModel carModel) {
+		this.carModel = carModel;
+	}
+	public Integer getCarmodelid() {
+		return carmodelid;
+	}
+	public void setCarmodelid(Integer carmodelid) {
+		this.carmodelid = carmodelid;
+	}
+	public Location getCurrentLocation() {
+		return currentLocation;
+	}
+	public void setCurrentLocation(Location currentLocation) {
+		this.currentLocation = currentLocation;
+	}
+	public Integer getLocationid() {
+		return locationid;
+	}
+	public void setLocationid(Integer locationid) {
+		this.locationid = locationid;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	
 }

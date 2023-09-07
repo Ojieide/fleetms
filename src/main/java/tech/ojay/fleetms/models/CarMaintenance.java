@@ -47,4 +47,59 @@ public class CarMaintenance extends Audit<String> {
 	private Supplier supplier;
 	private Integer supplierid;
 	private String remarks;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
+	}
+	public Integer getCarid() {
+		return carid;
+	}
+	public void setCarid(Integer carid) {
+		this.carid = carid;
+	}
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public Supplier getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+	public Integer getSupplierid() {
+		return supplierid;
+	}
+	public void setSupplierid(Integer supplierid) {
+		this.supplierid = supplierid;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	
 }
