@@ -10,12 +10,26 @@ import tech.ojay.fleetms.repositories.CarRepository;
 
 @Service
 public class CarService {
-	
 	@Autowired
 	private CarRepository carRepository;
-
-	public List<Car> fetchCars() {
+	
+	//Fetch list of cars
+	public List<Car> fetchCars(){
 		return carRepository.findAll();
+	}
+	
+	//Insert new car
+	public void store(Car car) {
+		carRepository.save(car);
+	}
+	
+	//Fetch car by id
+	public Car fetchCarDetailsById(int id) {
+		return carRepository.findById(id).orElse(null);
+	}
+
+	public void delete(int id) {
+		carRepository.deleteById(id);	
 	}
 
 }

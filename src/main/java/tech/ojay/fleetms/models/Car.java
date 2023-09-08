@@ -48,7 +48,7 @@ public class Car {
 	@JoinColumn(name="carbrandid", insertable=false, updatable=false)
 	private CarBrand carBrand;
 	private Integer carbrandid;
-	private String power;
+	private String energySource;
 	private String fuelCapacity;
 	
 	@ManyToOne
@@ -134,10 +134,10 @@ public class Car {
 		this.carbrandid = carbrandid;
 	}
 	public String getPower() {
-		return power;
+		return energySource;
 	}
-	public void setPower(String power) {
-		this.power = power;
+	public void setPower(String energySource) {
+		this.energySource = energySource;
 	}
 	public String getFuelCapacity() {
 		return fuelCapacity;

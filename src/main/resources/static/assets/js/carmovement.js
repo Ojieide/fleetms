@@ -4,17 +4,14 @@ $('document').ready(function() {
 	$('.table .btn-primary').on('click',function(event){		
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(client){
-			$('#idEdit').val(client.id);
-			$('#nameEdit').val(client.name);
-			$('#websiteEdit').val(client.website);
-			$('#addressEdit').val(client.address);
-			$('#stateEdit').val(client.stateid);
-			$('#countryEdit').val(client.countryid);
-			$('#cityEdit').val(client.city);
-			$('#phoneEdit').val(client.phone);	
-			$('#mobileEdit').val(client.mobile);			
-			$('#emailEdit').val(client.email);	
+		$.get(href, function(carmovement){
+			$('#idEdit').val(carmovement.id);
+			$('#carEdit').val(carmovement.carid);
+			$('#location1Edit').val(carmovement.locationid1);
+			$('#location2Edit').val(carmovement.locationid2);
+			$('#date1Edit').val(date1.substr(0,10));
+			$('#date2Edit').val(date2.substr(0,10));
+			$('#remarksEdit').val(carmovement.remarks);
 		});			
 		$('#editModal').modal();		
 	});
@@ -22,19 +19,16 @@ $('document').ready(function() {
 	$('.table #detailsBtn').on('click',function(event) {
 		event.preventDefault();		
 		var href= $(this).attr('href');		
-		$.get(href, function(client){
-			$('#idDetails').val(client.id);
-			$('#nameDetails').val(client.name);
-			$('#websiteDetails').val(client.website);
-			$('#addressDetails').val(client.address);
-			$('#stateDetails').val(client.stateid);
-			$('#countryDetails').val(client.countryid);
-			$('#cityDetails').val(client.city);
-			$('#phoneDetails').val(client.phone);	
-			$('#mobileDetails').val(client.mobile);			
-			$('#emailDetails').val(client.email);
-			$('#updatedbyDetails').val(client.updatedby);
-			$('#updateddateDetails').val(client.updateddate.substr(0,19).replace("T", " "));
+		$.get(href, function(carmovement){
+			$('#idDetails').val(carmovement.id);
+			$('#carDetails').val(carmovement.carid);
+			$('#location1Details').val(carmovement.locationid1);
+			$('#location2Details').val(carmovement.locationid2);
+			$('#date1Details').val(date1.substr(0,10));
+			$('#date2Details').val(date2.substr(0,10));
+			$('#remarksDetails').val(carmovement.remarks);
+			$('#updatedbyDetails').val(carmovement.updatedby);
+			$('#updateddateDetails').val(carmovement.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

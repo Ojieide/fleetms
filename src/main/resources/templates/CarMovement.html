@@ -527,7 +527,7 @@
           </div>
           <div class="form-group">
             <label for="remarksInsert" class="col-form-label">Remarks:</label>
-            <input type="text" class="form-control" id="remarksInsert" name="remarks">
+            <textarea type="text" class="form-control" id="remarksInsert" name="remarks" rows="1"></textarea>
           </div>
       </div>
       <div class="modal-footer">
@@ -594,7 +594,7 @@
           </div>
           <div class="form-group">
             <label for="remarksEdit" class="col-form-label">Remarks:</label>
-            <input type="text" class="form-control" id="remarksEdit" name="remarks">
+            <textarea type="text" class="form-control" id="remarksEdit" name="remarks" rows="1"></textarea>
           </div>
       </div>
       <div class="modal-footer">
@@ -622,7 +622,7 @@
           </div>
           <div class="form-group">
 		    <label for="carDetails" class="col-form-label">Car:</label>
-			    <select class="form-control" id="carDetails" name="carid">
+			    <select class="form-control" id="carDetails" name="carid" disabled>
 			       <option>-SELECT-</option>			    
 			       <option th:each="car : ${cars}"
 				        th:value="${car.id}"
@@ -632,7 +632,7 @@
           </div>
           <div class="form-group">
 		    <label for="location1Details" class="col-form-label">Departed from:</label>
-			    <select class="form-control" id="location1Details" name="locationid1">
+			    <select class="form-control" id="location1Details" name="locationid1" disabled>
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
@@ -642,11 +642,11 @@
           </div>
           <div class="form-group">
             <label for="date1Details" class="col-form-label">Departure Date:</label>
-            <input type="date" class="form-control" id="date1Details" name="date1">
+            <input type="date" class="form-control" id="date1Details" name="date1" readonly>
           </div>
           <div class="form-group">
 		    <label for="location2Details" class="col-form-label">Arrived at:</label>
-			    <select class="form-control" id="location2Details" name="locationid2">
+			    <select class="form-control" id="location2Details" name="locationid2" disabled>
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
@@ -656,11 +656,11 @@
           </div>
           <div class="form-group">
             <label for="date2Details" class="col-form-label">Arrival date:</label>
-            <input type="date" class="form-control" id="date2Details" name="date2">
+            <input type="date" class="form-control" id="date2Details" name="date2" readonly>
           </div>
           <div class="form-group">
             <label for="remarksDetails" class="col-form-label">Remarks:</label>
-            <input type="text" class="form-control" id="remarksDetails" name="remarks">
+            <textarea type="text" class="form-control" id="remarksDetails" name="remarks" rows="1" readonly></textarea>
           </div>
           <div class="form-group">
             <label for="updatedbyDetails" class="col-form-label">Updated By:</label>

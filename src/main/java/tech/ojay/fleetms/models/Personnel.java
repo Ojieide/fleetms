@@ -33,4 +33,61 @@ public class Personnel extends Person {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Date hireDate;
+
+	public PersonnelType getPersonnelType() {
+		return personnelType;
+	}
+
+	public void setPersonnelType(PersonnelType personnelType) {
+		this.personnelType = personnelType;
+	}
+
+	public Integer getPersonneltypeid() {
+		return personneltypeid;
+	}
+
+	public void setPersonneltypeid(Integer personneltypeid) {
+		this.personneltypeid = personneltypeid;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public Integer getRoleid() {
+		return roleid;
+	}
+
+	public void setRoleid(Integer roleid) {
+		this.roleid = roleid;
+	}
+
+	public Date getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
+	}
+	
 }

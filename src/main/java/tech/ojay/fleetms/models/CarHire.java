@@ -50,4 +50,83 @@ public class CarHire {
 	private Integer locationid;
 	private String price;
 	private String remarks;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
+	}
+	public Integer getCarid() {
+		return carid;
+	}
+	public void setCarid(Integer carid) {
+		this.carid = carid;
+	}
+	public Date getDateOut() {
+		return dateOut;
+	}
+	public void setDateOut(Date dateOut) {
+		this.dateOut = dateOut;
+	}
+	public String getTimeOut() {
+		return timeOut;
+	}
+	public void setTimeOut(String timeOut) {
+		this.timeOut = timeOut;
+	}
+	public Date getDateIn() {
+		return dateIn;
+	}
+	public void setDateIn(Date dateIn) {
+		this.dateIn = dateIn;
+	}
+	public String getTimeIn() {
+		return timeIn;
+	}
+	public void setTimeIn(String timeIn) {
+		this.timeIn = timeIn;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	public Integer getClientid() {
+		return clientid;
+	}
+	public void setClientid(Integer clientid) {
+		this.clientid = clientid;
+	}
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	public Integer getLocationid() {
+		return locationid;
+	}
+	public void setLocationid(Integer locationid) {
+		this.locationid = locationid;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	
 }

@@ -4,10 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Cars / Car Hire Template</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -427,13 +429,40 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">Add CarHire</button>
+    
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
+			
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List of Car Hires</h5>
+		      <table class="table">
+				  <thead>
+					  <tr>
+						  <th>Id</th>
+						  <th>Car</th>
+				          <th>Date Out</th>
+				          <th>Date In</th>
+						  <th>Actions</th>
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr th:each="carhire:${carhires}">
+						  <td th:text="${carhire.id}">
+						  <td th:text="${carhire.car.name}">
+						  <td th:text="${carhire.dateOut}">
+						  <td th:text="${carhire.dateIn}">
+						  <td>
+							  <div class="btn-group">
+								  <a class="btn btn-primary" th:href="@{/carhires/fetchCarHireById/{id}(id=${carhire.id})}" id="editBtn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fa fa-edit"></i></a>
+								  <a class="btn btn-success" th:href="@{/carhires/fetchCarHireById/{id}(id=${carhire.id})}" id="detailsBtn" data-bs-toggle="modal" data-bs-target="#detailsModal"><i class="fa fa-caret-square-o-down"></i></a>
+								  <a class="btn btn-danger" th:href="@{/carhires/deleteCarHireById/{id}(id=${carhire.id})}" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+							  </div>
+						  </td>
+					  </tr>
+				  </tbody>
+			  </table>
             </div>
           </div>
 
@@ -442,6 +471,348 @@
     </section>
 
   </main><!-- End #main -->
+  
+ <div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertModalLabel">New CarHire</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	   <form th:action="@{/carhires/insertNew}" method="post">
+		<table width="100%">
+			<tr>
+				<td width="50%">
+				
+				 <div class="form-group row">
+				    <label for="idInsert" class="col-sm-2 col-form-label">Id:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="idInsert" name="id" placeholder="Id" disabled>
+				    </div>
+				  </div>
+		         <div class="form-group row">
+				    <label for="carInsert" class="col-sm-2 col-form-label">Car:</label>
+				    <div class="col-sm-6">				    
+					    <select id="carInsert" name="carid" class="form-control">
+					       <option>-SELECT-</option>			    
+					       <option th:each="car : ${cars}"
+						        th:value="${car.id}"
+						        th:text="${car.name}">
+						   </option>
+					    </select>		
+					    </div>		    
+				  </div>
+            <div class="form-group row">
+		    <label for="clientInsert" class="col-sm-2 col-form-label">Client:</label>
+			<div class="col-sm-6">		    
+			    <select  id="clientInsert" name="clientid" class="form-control" >
+			       <option>-SELECT-</option>			    
+			       <option th:each="client : ${clients}"
+				        th:value="${client.id}"
+				        th:text="${client.name}">
+				   </option>
+			    </select>	
+			    </div>			    
+		  </div>
+				  <div class="form-group row">
+				    <label for="dateOutInsert" class="col-sm-2 col-form-label">Date Out:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="dateOutInsert" name="dateOut" placeholder="Date Out">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="timeOutInsert" class="col-sm-2 col-form-label">Time Out:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="timeOutInsert" name="timeOut" placeholder="Time Out">
+				    </div>
+				  </div>
+				</td>
+			<td width="50%" style="padding-left:10px">
+	         <div class="form-group row">
+			    <label for="locationInsert" class="col-sm-2 col-form-label">Destination:</label>
+				  <div class="col-sm-6">			    
+				    <select id="locationInsert" name="locationid" class="form-control">
+				       <option>-SELECT-</option>			    
+				       <option th:each="location : ${locations}"
+					        th:value="${location.id}"
+					        th:text="${location.description}">
+					   </option>
+				    </select>				    
+			     </div>
+			  </div>  
+				  <div class="form-group row">
+				    <label for="dateinInsert" class="col-sm-2 col-form-label">Date In:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="dateinInsert" name="dateIn" placeholder="Date In">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="timeinInsert" class="col-sm-2 col-form-label">Time In:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="timeinInsert" name="timeIn" placeholder="Time In">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="priceInsert" class="col-sm-2 col-form-label">Price:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="priceInsert" name="price" placeholder="Price">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="remarksInsert" class="col-sm-2 col-form-label">Remarks</label>
+				    <div class="col-sm-6">
+				      <textarea class="form-control" id="remarksInsert" name="remarks" placeholder="Remarks" rows="1"></textarea>
+				    </div>
+				  </div>
+				</td>
+			</tr>
+		</table>
+      </div>
+
+      <div class="modal-footer">
+		  <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+  
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Update Record</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	   <form th:action="@{/carhires/update}" method="put">
+		<table width="100%">
+			<tr>
+				<td width="50%">
+				
+				 <div class="form-group row">
+				    <label for="idEdit" class="col-sm-2 col-form-label">Id:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="idEdit" name="id" placeholder="Id" readonly>
+				    </div>
+				  </div>
+		         <div class="form-group row">
+				    <label for="carEdit" class="col-sm-2 col-form-label">Car:</label>
+				    <div class="col-sm-6">				    
+					    <select id="carEdit" name="carid" class="form-control">
+					       <option>-SELECT-</option>			    
+					       <option th:each="car : ${cars}"
+						        th:value="${car.id}"
+						        th:text="${car.name}">
+						   </option>
+					    </select>		
+					    </div>		    
+				  </div>
+            <div class="form-group row">
+		    <label for="clientEdit" class="col-sm-2 col-form-label">Client:</label>
+			<div class="col-sm-6">		    
+			    <select  id="clientEdit" name="clientid" class="form-control" >
+			       <option>-SELECT-</option>			    
+			       <option th:each="client : ${clients}"
+				        th:value="${client.id}"
+				        th:text="${client.name}">
+				   </option>
+			    </select>	
+			    </div>			    
+		  </div>
+				  <div class="form-group row">
+				    <label for="dateOutEdit" class="col-sm-2 col-form-label">Date Out:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="dateOutEdit" name="dateOut" placeholder="Date Out">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="timeOutEdit" class="col-sm-2 col-form-label">Time Out:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="timeOutEdit" name="timeOut" placeholder="Time Out">
+				    </div>
+				  </div>
+				</td>
+			<td width="50%" style="padding-left:10px">
+	         <div class="form-group row">
+			    <label for="locationEdit" class="col-sm-2 col-form-label">Destination:</label>
+				  <div class="col-sm-6">			    
+				    <select id="locationEdit" name="locationid" class="form-control">
+				       <option>-SELECT-</option>			    
+				       <option th:each="location : ${locations}"
+					        th:value="${location.id}"
+					        th:text="${location.description}">
+					   </option>
+				    </select>				    
+			     </div>
+			  </div>  
+				  <div class="form-group row">
+				    <label for="dateinEdit" class="col-sm-2 col-form-label">Date In:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="dateinEdit" name="dateIn" placeholder="Date In">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="timeinEdit" class="col-sm-2 col-form-label">Time In:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="timeinEdit" name="timeIn" placeholder="Time In">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="priceEdit" class="col-sm-2 col-form-label">Price:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="priceEdit" name="price" placeholder="Price">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="remarksEdit" class="col-sm-2 col-form-label">Remarks</label>
+				    <div class="col-sm-6">
+				      <textarea class="form-control" id="remarksEdit" name="remarks" placeholder="Remarks" rows="1"></textarea>
+				    </div>
+				  </div>
+				</td>
+			</tr>
+		</table>
+      </div>
+      <div class="modal-footer">
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+ <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsModalLabel">Client Details</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<table width="100%">
+			<tr>
+				<td width="50%">
+				
+				 <div class="form-group row">
+				    <label for="idDetails" class="col-sm-2 col-form-label">Id:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="idDetails" name="id" placeholder="Id" readonly>
+				    </div>
+				  </div>
+		         <div class="form-group row">
+				    <label for="carDetails" class="col-sm-2 col-form-label">Car:</label>
+				    <div class="col-sm-6">				    
+					    <select id="carDetails" name="carid" class="form-control">
+					       <option>-SELECT-</option>			    
+					       <option th:each="car : ${cars}"
+						        th:value="${car.id}"
+						        th:text="${car.name}">
+						   </option>
+					    </select>		
+					    </div>		    
+				  </div>
+            <div class="form-group row">
+		    <label for="clientDetails" class="col-sm-2 col-form-label">Client:</label>
+			<div class="col-sm-6">		    
+			    <select  id="clientDetails" name="clientid" class="form-control" >
+			       <option>-SELECT-</option>			    
+			       <option th:each="client : ${clients}"
+				        th:value="${client.id}"
+				        th:text="${client.name}">
+				   </option>
+			    </select>	
+			    </div>			    
+		  </div>
+				  <div class="form-group row">
+				    <label for="dateOutDetails" class="col-sm-2 col-form-label">Date Out:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="dateOutDetails" name="dateOut" placeholder="Date Out">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="timeOutDetails" class="col-sm-2 col-form-label">Time Out:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="timeOutDetails" name="timeOut" placeholder="Time Out">
+				    </div>
+				  </div>
+				</td>
+			<td width="50%" style="padding-left:10px">
+	         <div class="form-group row">
+			    <label for="locationDetails" class="col-sm-2 col-form-label">Destination:</label>
+				  <div class="col-sm-6">			    
+				    <select id="locationDetails" name="locationid" class="form-control">
+				       <option>-SELECT-</option>			    
+				       <option th:each="location : ${locations}"
+					        th:value="${location.id}"
+					        th:text="${location.description}">
+					   </option>
+				    </select>				    
+			     </div>
+			  </div>  
+				  <div class="form-group row">
+				    <label for="dateinDetails" class="col-sm-2 col-form-label">Date In:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="dateinDetails" name="dateIn" placeholder="Date In">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="timeinDetails" class="col-sm-2 col-form-label">Time In:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="timeinDetails" name="timeIn" placeholder="Time In">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="priceDetails" class="col-sm-2 col-form-label">Price:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="priceDetails" name="price" placeholder="Price">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="remarksDetails" class="col-sm-2 col-form-label">Remarks</label>
+				    <div class="col-sm-6">
+				      <textarea class="form-control" id="remarksDetails" name="remarks" placeholder="Remarks" rows="1"></textarea>
+				    </div>
+				  </div>
+				</td>
+			</tr>
+		</table>
+      </div>
+      <div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this data?</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="btn btn-primary" id="confirmDeleteBtn">Yes</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -464,6 +835,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/carhire.js"></script>
 
 </body>
 
