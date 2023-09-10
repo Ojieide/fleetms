@@ -9,8 +9,8 @@ $('document').ready(function() {
 			$('#carEdit').val(carmovement.carid);
 			$('#location1Edit').val(carmovement.locationid1);
 			$('#location2Edit').val(carmovement.locationid2);
-			$('#date1Edit').val(date1.substr(0,10));
-			$('#date2Edit').val(date2.substr(0,10));
+			$('#date1Edit').val(carmovement.date1.substr(0,10));
+			$('#date2Edit').val(carmovement.date2.substr(0,10));
 			$('#remarksEdit').val(carmovement.remarks);
 		});			
 		$('#editModal').modal();		
@@ -24,8 +24,8 @@ $('document').ready(function() {
 			$('#carDetails').val(carmovement.carid);
 			$('#location1Details').val(carmovement.locationid1);
 			$('#location2Details').val(carmovement.locationid2);
-			$('#date1Details').val(date1.substr(0,10));
-			$('#date2Details').val(date2.substr(0,10));
+			$('#date1Details').val(carmovement.date1.substr(0,10));
+			$('#date2Details').val(carmovement.date2.substr(0,10));
 			$('#remarksDetails').val(carmovement.remarks);
 			$('#updatedbyDetails').val(carmovement.updatedby);
 			$('#updateddateDetails').val(carmovement.updateddate.substr(0,19).replace("T", " "));

@@ -451,7 +451,7 @@
 					  <tr th:each="carmovement:${carmovements}">
 						  <td th:text="${carmovement.id}">
 						  <td th:text="${carmovement.car.name}">
-						  <td th:text="${carmovement.date}">
+						  <td th:text="${carmovement.date1}">
 						  <td th:text="${carmovement.remarks}">
 						  <td>
 							  <div class="btn-group">
@@ -487,23 +487,23 @@
             <label for="idInsert" class="col-form-label">Id:</label>
             <input type="text" class="form-control" id="idInsert" name="id" disabled>
           </div>
-          <div class="form-group">
-		    <label for="carInsert" class="col-form-label">Car:</label>
-			    <select class="form-control" id="carInsert" name="carid">
-			       <option>-SELECT-</option>			    
-			       <option th:each="car : ${cars}"
-				        th:value="${car.id}"
-				        th:text="${car.name}">
-				   </option>
-			    </select>				    			    
-          </div>
+		  <div class="form-group row">
+			  <label for="carInsert" class="col-form-label">Car:</label>
+			  <select class="form-control" id="carInsert" name="carid">
+				  <option>-SELECT-</option>
+				  <option th:each="car : ${cars}"
+				  		th:value="${car.id}"
+				  		th:text="${car.name}">
+				  </option>
+			  </select>
+		  </div>
           <div class="form-group">
 		    <label for="location1Insert" class="col-form-label">Departed from:</label>
 			    <select class="form-control" id="location1Insert" name="locationid1">
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
-				        th:text="${location.description}">
+				        th:text="${location.address}">
 				   </option>
 			    </select>				    
           </div>
@@ -517,7 +517,7 @@
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
-				        th:text="${location.description}">
+				        th:text="${location.address}">
 				   </option>
 			    </select>			    
           </div>
@@ -570,7 +570,7 @@
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
-				        th:text="${location.description}">
+				        th:text="${location.address}">
 				   </option>
 			    </select>				    
           </div>
@@ -584,7 +584,7 @@
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
-				        th:text="${location.description}">
+				        th:text="${location.address}">
 				   </option>
 			    </select>			    
           </div>
@@ -636,7 +636,7 @@
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
-				        th:text="${location.description}">
+				        th:text="${location.address}">
 				   </option>
 			    </select>				    
           </div>
@@ -650,7 +650,7 @@
 			       <option>-SELECT-</option>			    
 			       <option th:each="location : ${locations}"
 				        th:value="${location.id}"
-				        th:text="${location.description}">
+				        th:text="${location.address}">
 				   </option>
 			    </select>			    
           </div>

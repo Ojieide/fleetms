@@ -518,15 +518,15 @@
 			    </div>			    
 		  </div>
 				  <div class="form-group row">
-				    <label for="dateOutInsert" class="col-sm-2 col-form-label">Date Out:</label>
+				    <label for="dateoutInsert" class="col-sm-2 col-form-label">Date Out:</label>
 				    <div class="col-sm-6">
-				      <input type="date" class="form-control" id="dateOutInsert" name="dateOut" placeholder="Date Out">
+				      <input type="date" class="form-control" id="dateoutInsert" name="dateOut" placeholder="Date Out">
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="timeOutInsert" class="col-sm-2 col-form-label">Time Out:</label>
+				    <label for="timeoutInsert" class="col-sm-2 col-form-label">Time Out:</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="timeOutInsert" name="timeOut" placeholder="Time Out">
+				      <input type="text" class="form-control" id="timeoutInsert" name="timeOut" placeholder="Time Out">
 				    </div>
 				  </div>
 				</td>
@@ -538,7 +538,7 @@
 				       <option>-SELECT-</option>			    
 				       <option th:each="location : ${locations}"
 					        th:value="${location.id}"
-					        th:text="${location.description}">
+					        th:text="${location.address}">
 					   </option>
 				    </select>				    
 			     </div>
@@ -627,15 +627,15 @@
 			    </div>			    
 		  </div>
 				  <div class="form-group row">
-				    <label for="dateOutEdit" class="col-sm-2 col-form-label">Date Out:</label>
+				    <label for="dateoutEdit" class="col-sm-2 col-form-label">Date Out:</label>
 				    <div class="col-sm-6">
-				      <input type="date" class="form-control" id="dateOutEdit" name="dateOut" placeholder="Date Out">
+				      <input type="date" class="form-control" id="dateoutEdit" name="dateOut" placeholder="Date Out">
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="timeOutEdit" class="col-sm-2 col-form-label">Time Out:</label>
+				    <label for="timeoutEdit" class="col-sm-2 col-form-label">Time Out:</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="timeOutEdit" name="timeOut" placeholder="Time Out">
+				      <input type="text" class="form-control" id="timeoutEdit" name="timeOut" placeholder="Time Out">
 				    </div>
 				  </div>
 				</td>
@@ -647,7 +647,7 @@
 				       <option>-SELECT-</option>			    
 				       <option th:each="location : ${locations}"
 					        th:value="${location.id}"
-					        th:text="${location.description}">
+					        th:text="${location.address}">
 					   </option>
 				    </select>				    
 			     </div>
@@ -734,15 +734,15 @@
 			    </div>			    
 		  </div>
 				  <div class="form-group row">
-				    <label for="dateOutDetails" class="col-sm-2 col-form-label">Date Out:</label>
+				    <label for="dateoutDetails" class="col-sm-2 col-form-label">Date Out:</label>
 				    <div class="col-sm-6">
-				      <input type="date" class="form-control" id="dateOutDetails" name="dateOut" placeholder="Date Out">
+				      <input type="date" class="form-control" id="dateoutDetails" name="dateOut" placeholder="Date Out">
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="timeOutDetails" class="col-sm-2 col-form-label">Time Out:</label>
+				    <label for="timeoutDetails" class="col-sm-2 col-form-label">Time Out:</label>
 				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="timeOutDetails" name="timeOut" placeholder="Time Out">
+				      <input type="text" class="form-control" id="timeoutDetails" name="timeOut" placeholder="Time Out">
 				    </div>
 				  </div>
 				</td>
@@ -754,7 +754,7 @@
 				       <option>-SELECT-</option>			    
 				       <option th:each="location : ${locations}"
 					        th:value="${location.id}"
-					        th:text="${location.description}">
+					        th:text="${location.address}">
 					   </option>
 				    </select>				    
 			     </div>

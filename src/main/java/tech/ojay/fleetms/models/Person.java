@@ -28,7 +28,7 @@ public class Person {
 	private String othername;
 	private String title;
 	private String initials;
-	private String socialSecurityNumber;
+	private String nationalIdentityNumber;
 	private String gender;
 	private String maritalStatus;
 	
@@ -86,11 +86,11 @@ public class Person {
 	public void setInitials(String initials) {
 		this.initials = initials;
 	}
-	public String getSocialSecurityNumber() {
-		return socialSecurityNumber;
+	public String getNationalIdentityNumber() {
+		return nationalIdentityNumber;
 	}
-	public void setSocialSecurityNumber(String socialSecurityNumber) {
-		this.socialSecurityNumber = socialSecurityNumber;
+	public void setNationalIdentityNumber(String nationalIdentityNumber) {
+		this.nationalIdentityNumber = nationalIdentityNumber;
 	}
 	public String getGender() {
 		return gender;

@@ -486,6 +486,12 @@
 		<table width="100%">
 			<tr>
 				<td width="50%">
+				 <div class="form-group row">
+				    <label for="idInsert" class="col-sm-2 col-form-label">Id:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="idInsert" name="id" placeholder="Id" disabled>
+				    </div>
+				  </div>
 				  <div class="form-group row">
 				    <label for="cartypeInsert" class="col-sm-2 col-form-label">Car Type:</label>
 				    <div class="col-sm-6">
@@ -541,7 +547,7 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="carmodelInsert" class="col-sm-2 col-form-label">Vehicle Model:</label>
+				    <label for="carmodelInsert" class="col-sm-2 col-form-label">Car Model:</label>
 				    <div class="col-sm-6">
 					    <select class="form-control" id="carmodelInsert" name="carmodelid">
 			               <option>-SELECT-</option>			    					    
@@ -553,22 +559,19 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="locationInsert" class="col-sm-2 col-form-label">Car Location:</label>
+				    <label for="currentlocationInsert" class="col-sm-2 col-form-label">Current Location:</label>
 				    <div class="col-sm-6">
-					    <select class="form-control" id="locationInsert" name="locationid">
+					    <select class="form-control" id="currentlocationInsert" name="locationid">
 		        	       <option>-SELECT-</option>			    					    
 					       <option th:each="location : ${locations}"
 						        th:value="${location.id}"
-						        th:text="${location.description}">
+						        th:text="${location.address}">
 						   </option>				    
 						</select>
 					</div>
 				  </div>
 				</td>
 				<td width="50%" style="padding-left:10px">
-				  <div class="form-group row">
-
-				  </div>
 				  <div class="form-group row">
 				    <label for="energysourceInsert" class="col-sm-2 col-form-label">Energy Source:</label>
 				    <div class="col-sm-6">
@@ -594,7 +597,7 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="personnelInsert" class="col-sm-2 col-form-label">Personnel In Charge:</label>
+				    <label for="personnelInsert" class="col-sm-2 col-form-label">In Charge;</label>
 				    <div class="col-sm-6">
 					    <select class="form-control" id="personnelInsert" name="personnelid">
 		        	       <option disabled>-SELECT-</option>			    					  					    
@@ -651,6 +654,12 @@
 		<table width="100%">
 			<tr>
 				<td width="50%">
+				 <div class="form-group row">
+				    <label for="idEdit" class="col-sm-2 col-form-label">Id:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="idEdit" name="id" placeholder="Id" readonly>
+				    </div>
+				  </div>
 				  <div class="form-group row">
 				    <label for="cartypeEdit" class="col-sm-2 col-form-label">Car Type:</label>
 				    <div class="col-sm-6">
@@ -706,7 +715,7 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="carmodelEdit" class="col-sm-2 col-form-label">Vehicle Model:</label>
+				    <label for="carmodelEdit" class="col-sm-2 col-form-label">Car Model:</label>
 				    <div class="col-sm-6">
 					    <select class="form-control" id="carmodelEdit" name="carmodelid">
 			               <option>-SELECT-</option>			    					    
@@ -718,22 +727,19 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="locationEdit" class="col-sm-2 col-form-label">Car Location:</label>
+				    <label for="currentlocationEdit" class="col-sm-2 col-form-label">Current Location:</label>
 				    <div class="col-sm-6">
-					    <select class="form-control" id="locationEdit" name="locationid">
+					    <select class="form-control" id="currentlocationEdit" name="locationid">
 		        	       <option>-SELECT-</option>			    					    
 					       <option th:each="location : ${locations}"
 						        th:value="${location.id}"
-						        th:text="${location.description}">
+						        th:text="${location.address}">
 						   </option>				    
 						</select>
 					</div>
 				  </div>
 				</td>
 				<td width="50%" style="padding-left:10px">
-				  <div class="form-group row">
-
-				  </div>
 				  <div class="form-group row">
 				    <label for="energysourceEdit" class="col-sm-2 col-form-label">Energy Source:</label>
 				    <div class="col-sm-6">
@@ -759,7 +765,7 @@
 				    </div>
 				  </div>
 				  <div class="form-group row">
-				    <label for="personnelEdit" class="col-sm-2 col-form-label">Personnel In Charge:</label>
+				    <label for="personnelEdit" class="col-sm-2 col-form-label">In Charge;</label>
 				    <div class="col-sm-6">
 					    <select class="form-control" id="personnelEdit" name="personnelid">
 		        	       <option disabled>-SELECT-</option>			    					  					    
@@ -799,6 +805,170 @@
     </div>
   </div>
  </form>
+</div>
+
+ <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsModalLabel">Car Details</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<table width="100%">
+			<tr>
+				<td width="50%">
+				 <div class="form-group row">
+				    <label for="idInsert" class="col-sm-2 col-form-label">Id:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="idInsert" name="id" placeholder="Id" readonly>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="cartypeDetails" class="col-sm-2 col-form-label">Car Type:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="cartypeDetails" name="cartypeid" disabled>
+			               <option>-SELECT-</option>			    					    
+					       <option th:each="cartype : ${cartypes}"
+						        th:value="${cartype.id}"
+						        th:text="${cartype.description}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
+				 <div class="form-group row">
+				    <label for="carnameDetails" class="col-sm-2 col-form-label">Car Name:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="carnameDetails" name="name" placeholder="Car Name" readonly>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="carnumberDetails" class="col-sm-2 col-form-label">Car Number:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="carnumberDetails" name="carNumber" placeholder="Car Number" readonly>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="registrationdateDetails" class="col-sm-2 col-form-label">Registration Date:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="registrationdateDetails" name="registrationDate" placeholder="Registration Date" readonly>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="descriptionDetails" class="col-sm-2 col-form-label">Description:</label>
+				    <div class="col-sm-6">
+				      <textarea type="text" class="form-control" id="descriptionDetails" name="description" placeholder="Description" rows="2" readonly></textarea>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="acquisitiondateDetails" class="col-sm-2 col-form-label">Acquisition Date:</label>
+				    <div class="col-sm-6">
+				      <input type="date" class="form-control" id="acquisitiondateDetails" name="acquisitionDate" placeholder="Acquisition Date" readonly>				    
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="carbrandDetails" class="col-sm-2 col-form-label">Car Brand:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="carbrandDetails" name="carbrandid" disabled>
+			               <option>-SELECT-</option>			    					   
+					       <option th:each="carbrand : ${carbrands}"
+						        th:value="${carbrand.id}"
+						        th:text="${carbrand.description}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="carmodelDetails" class="col-sm-2 col-form-label">Car Model:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="carmodelDetails" name="carmodelid" disabled>
+			               <option>-SELECT-</option>			    					    
+					       <option th:each="carmodel : ${carmodels}"
+						        th:value="${carmodel.id}"
+						        th:text="${carmodel.description}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="currentlocationDetails" class="col-sm-2 col-form-label">Current Location:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="currentlocationDetails" name="locationid" disabled>
+		        	       <option>-SELECT-</option>			    					    
+					       <option th:each="location : ${locations}"
+						        th:value="${location.id}"
+						        th:text="${location.address}">
+						   </option>				    
+						</select>
+					</div>
+				  </div>
+				</td>
+				<td width="50%" style="padding-left:10px">
+				  <div class="form-group row">
+				    <label for="energysourceDetails" class="col-sm-2 col-form-label">Energy Source:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="energysourceDetails" name="energySource" placeholder="Energy Source(disel or fuel)" readonly>				    
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="fuelcapacityDetails" class="col-sm-2 col-form-label">Fuel Capacity:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="fuelcapacityDetails" name="fuelCapacity" placeholder="Fuel Capacity" readonly>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="netweightDetails" class="col-sm-2 col-form-label">Net Weight:</label>
+				    <div class="col-sm-6">
+				      <input type="text" class="form-control" id="netweightDetails" name="netWeight" placeholder="Net Weight" readonly>
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="remarksDetails" class="col-sm-2 col-form-label">Remarks:</label>
+				    <div class="col-sm-6">
+				      <textarea type="text" class="form-control" id="remarksDetails" name="remarks" placeholder="Remarks"rows="2" readonly></textarea>			    
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="personnelDetails" class="col-sm-2 col-form-label">In Charge;</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="personnelDetails" name="personnelid" disabled>
+		        	       <option disabled>-SELECT-</option>			    					  					    
+					       <option th:each="personnel : ${personnel}"
+						        th:value="${personnel.id}"
+						        th:text="${personnel.firstname}">
+						   </option>
+						</select>					    
+					</div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="carstatusDetails" class="col-sm-2 col-form-label">Car Status:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="carstatusDetails" name="carstatusid" disabled>
+			               <option>-SELECT-</option>			    					    
+					       <option th:each="carstatus : ${carstatus}"
+						        th:value="${carstatus.id}"
+						        th:text="${carstatus.description}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="imageDetails" class="col-sm-2 col-form-label">Select Image:</label>
+				    <div class="col-sm-6">
+				      <input type="file" class="form-control-file" id="imageDetails" name="photo" placeholder="Select File" disabled>
+				    </div>
+				  </div>
+				</td>
+			</tr>
+		</table>
+      </div>
+      <div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal" id="deleteModal" tabindex="-1" role="dialog">

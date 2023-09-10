@@ -133,10 +133,10 @@ public class Car {
 	public void setCarbrandid(Integer carbrandid) {
 		this.carbrandid = carbrandid;
 	}
-	public String getPower() {
+	public String getEnergySource() {
 		return energySource;
 	}
-	public void setPower(String energySource) {
+	public void setEnergySource(String energySource) {
 		this.energySource = energySource;
 	}
 	public String getFuelCapacity() {

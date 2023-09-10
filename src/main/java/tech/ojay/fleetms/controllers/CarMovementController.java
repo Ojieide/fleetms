@@ -38,7 +38,7 @@ public class CarMovementController {
 		model.addAttribute("carmovements", carMovementList);
 		
 		List<Car> carList = carService.fetchCars();
-		model.addAttribute("countries", carList);
+		model.addAttribute("cars", carList);
 		
 		List<Location> locationList = locationService.fetchLocations();
 		model.addAttribute("locations", locationList);

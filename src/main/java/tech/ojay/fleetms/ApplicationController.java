@@ -10,4 +10,16 @@ public class ApplicationController {
 	public String fetchIndex() {
 		return "index";
 	}
+	
+	//Display the login page
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
+	//Display the logout page
+	@GetMapping("/logout")
+	public String logout() {
+		return "pages-login";
+	}
 }

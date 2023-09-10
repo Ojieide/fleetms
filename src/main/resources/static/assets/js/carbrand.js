@@ -1,6 +1,6 @@
 $('document').ready(function() {
 	
-	$('.table #submitBtn').on('click',function(event){		
+	$('.table #editBtn').on('click',function(event){		
 		event.preventDefault();		
 		var href= $(this).attr('href');		
 		$.get(href, function(carbrand){
