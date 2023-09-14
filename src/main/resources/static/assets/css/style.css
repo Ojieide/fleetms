@@ -13,20 +13,6 @@
   scroll-behavior: smooth;
 }
 
-table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  min-width: 400px;
-}
-
-table thead tr {
-  background-color: #87CEEB;
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
-}
-
 body {
   font-family: "Open Sans", sans-serif;
   background: #f6f9ff;

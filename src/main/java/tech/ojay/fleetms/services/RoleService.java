@@ -22,13 +22,4 @@ public class RoleService {
 	public void store(Role role) {
 		roleRepository.save(role);
 	}
-	
-	//Fetch role by id
-	public Role fetchRoleDetailsById(int id) {
-		return roleRepository.findById(id).orElse(null);
-	}
-
-	public void delete(int id) {
-		roleRepository.deleteById(id);	
-	}
 }

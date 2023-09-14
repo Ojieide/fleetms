@@ -1,17 +1,52 @@
 package tech.ojay.fleetms.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import jakarta.persistence.Entity;
+import java.util.List;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Data
-@EqualsAndHashCode(callSuper=false)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Role extends CommonObj {
+@Table(name="roles")
+public class Role
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(nullable=false, unique=true)
+    private String name;
+
+    @ManyToMany(mappedBy="roles")
+    private List<User> users;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 }
