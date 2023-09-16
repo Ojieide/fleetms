@@ -23,7 +23,7 @@ public class ApplicationController {
         this.userService = userService;
     }
 	
-	//Display the index page
+	//handler method to handle index page
 	@GetMapping("/index")
 	public String fetchIndex() {
 		return "index";

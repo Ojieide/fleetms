@@ -433,9 +433,25 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">List of Users</h5>
+              <h5 class="card-title">List of Registered Users</h5>
             </div>
-          </div>
+          <table class="table table-bordered table-hover">
+          	<thead class="table-dark">
+	            <tr>
+	                <th>First Name</th>
+	                <th>Last Name</th>
+	                <th>Email</th>
+	            </tr>
+        	</thead>
+        	<tbody>
+	            <tr th:each = "user : ${users}">
+	                <td th:text = "${user.firstName}"></td>
+	                <td th:text = "${user.lastName}"></td>
+	                <td th:text = "${user.email}"></td>
+	            </tr>
+        	</tbody>
+    	</table>
+        </div>
 
         </div>
       </div>
