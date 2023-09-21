@@ -18,8 +18,6 @@ $('document').ready(function() {
 			$('#idDetails').val(cartype.id);	
 			$('#descriptionDetails').val(cartype.description);
 			$('#detailsDetails').val(cartype.details);
-			$('#updatedbyDetails').val(cartype.updatedby);
-			//$('#updateddateDetails').val(cartype.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

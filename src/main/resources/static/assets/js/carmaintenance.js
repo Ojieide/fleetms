@@ -26,8 +26,6 @@ $('document').ready(function() {
 			$('#endDateDetails').val(carmaintenance.endDate.substr(0,10));
 			$('#supplierDetails').val(carmaintenance.supplierid);
 			$('#priceDetails').val(carmaintenance.price);
-			$('#updatedbyDetails').val(carmaintenance.updatedby);
-			//$('#updateddateDetails').val(carmaintenance.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

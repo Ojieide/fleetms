@@ -24,8 +24,6 @@ $('document').ready(function() {
 			$('#codeDetails').val(state.code);		
 			$('#nameDetails').val(state.name);
 			$('#detailsDetails').val(state.details);
-			$('#updatedbyDetails').val(state.updatedby);
-			//$('#updateddateDetails').val(state.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

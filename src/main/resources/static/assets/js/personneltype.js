@@ -18,8 +18,6 @@ $('document').ready(function() {
 			$('#idDetails').val(personneltype.id);	
 			$('#descriptionDetails').val(personneltype.description);
 			$('#detailsDetails').val(personneltype.details);
-			$('#updatedbyDetails').val(personneltype.updatedby);
-			//$('#updateddateDetails').val(personneltype.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

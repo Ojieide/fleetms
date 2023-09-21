@@ -18,8 +18,6 @@ $('document').ready(function() {
 			$('#idDetails').val(invoicestatus.id);	
 			$('#descriptionDetails').val(invoicestatus.description);
 			$('#detailsDetails').val(invoicestatus.details);
-			$('#updatedbyDetails').val(invoicestatus.updatedby);
-			//$('#updateddateDetails').val(invoicestatus.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

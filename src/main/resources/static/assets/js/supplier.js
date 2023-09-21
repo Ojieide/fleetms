@@ -33,8 +33,6 @@ $('document').ready(function() {
 			$('#phoneDetails').val(supplier.phone);	
 			$('#mobileDetails').val(supplier.mobile);			
 			$('#emailDetails').val(supplier.email);
-			$('#updatedbyDetails').val(supplier.updatedby);
-			$('#updateddateDetails').val(supplier.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

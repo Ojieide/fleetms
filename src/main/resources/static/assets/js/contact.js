@@ -26,8 +26,6 @@ $('document').ready(function() {
 			$('#phoneDetails').val(contact.phone);
 			$('#mobileDetails').val(contact.mobile);
 			$('#remarksDetails').val(contact.remarks);
-			$('#updatedbyDetails').val(contact.updatedby);
-			//$('#updateddateDetails').val(contact.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

@@ -27,8 +27,6 @@ $('document').ready(function() {
 			$('#date1Details').val(carmovement.date1.substr(0,10));
 			$('#date2Details').val(carmovement.date2.substr(0,10));
 			$('#remarksDetails').val(carmovement.remarks);
-			$('#updatedbyDetails').val(carmovement.updatedby);
-			$('#updateddateDetails').val(carmovement.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

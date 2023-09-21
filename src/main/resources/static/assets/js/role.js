@@ -18,8 +18,6 @@ $('document').ready(function() {
 			$('#idDetails').val(role.id);	
 			$('#descriptionDetails').val(role.description);
 			$('#detailsDetails').val(role.details);
-			$('#updatedbyDetails').val(role.updatedby);
-			//$('#updateddateDetails').val(role.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

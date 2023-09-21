@@ -18,8 +18,6 @@ $('document').ready(function() {
 			$('#idDetails').val(carstatus.id);	
 			$('#descriptionDetails').val(carstatus.description);
 			$('#detailsDetails').val(carstatus.details);
-			$('#updatedbyDetails').val(carstatus.updatedby);
-			//$('#updateddateDetails').val(carstatus.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

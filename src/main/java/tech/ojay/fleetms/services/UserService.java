@@ -22,4 +22,13 @@ public class UserService {
 	public void store(User user) {
 		userRepository.save(user);
 	}
+	
+	//Fetch user by id
+	public User fetchUserDetailsById(Long id) {
+		return userRepository.findById(id).orElse(null);
+	}
+
+	public void delete(Long id) {
+		userRepository.deleteById(id);	
+	}
 }

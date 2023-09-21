@@ -24,8 +24,6 @@ $('document').ready(function() {
 			$('#cityDetails').val(location.city);		
 			$('#addressDetails').val(location.address);
 			$('#detailsDetails').val(location.details);
-			$('#updatedbyDetails').val(location.updatedby);
-			//$('#updateddateDetails').val(location.updateddate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	

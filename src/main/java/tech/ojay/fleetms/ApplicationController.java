@@ -28,12 +28,6 @@ public class ApplicationController {
 	public String fetchIndex() {
 		return "index";
 	}
-	
-    // handler method to handle registration and login page request
-    @GetMapping("/index2")
-    public String home(){
-        return "index2";
-    }
     
     // handler method to handle user registration form request
     @GetMapping("/register")

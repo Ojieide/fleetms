@@ -32,8 +32,6 @@ $('document').ready(function() {
 			$('#priceDetails').val(carhire.price);
 			$('#remarksDetails').val(carhire.remarks);
 			$('#carDetails').val(carhire.carid);
-			$('#updatedbyDetails').val(carhire.updatedby);
-			$('#updatedateDetails').val(carhire.updatedate.substr(0,19).replace("T", " "));
 		});			
 		$('#detailsModal').modal();		
 	});	
