@@ -1,2 +1,1 @@
-# Fleet Management System (FleetMS)
-Portfolio Project: MVP
+Fleet Management System (FleetMS)
