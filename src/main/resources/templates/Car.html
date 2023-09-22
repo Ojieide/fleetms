@@ -152,11 +152,6 @@
         </a>
         <ul id="people-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/personnel}">
-              <i class="bi bi-circle"></i><span>Personnel</span>
-            </a>
-          </li>
-          <li>
             <a th:href="@{/clients}">
               <i class="bi bi-circle"></i><span>Clients</span>
             </a>
@@ -185,8 +180,8 @@
         </a>
         <ul id="HR-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/roles}">
-              <i class="bi bi-circle"></i><span>Roles</span>
+            <a th:href="@{/personnel}">
+              <i class="bi bi-circle"></i><span>Personnel</span>
             </a>
           </li>
           <li>
@@ -263,7 +258,7 @@
 		      <table class="table">
 				  <thead>
 					  <tr>
-						  <th>Id</th>
+						  <th>Image</th>
 						  <th>Name</th>
 				          <th>Description</th>
 				          <th>Acquisition Date</th>
@@ -272,7 +267,11 @@
 				  </thead>
 				  <tbody>
 					  <tr th:each="car:${cars}">
-						  <td th:text="${car.id}">
+						  <td>
+							  <a id="imageBtn" th:href="@{'/assets/img/images/cars/' + ${car.id} +'.png'}">
+								  <img th:src="@{'/assets/img/images/cars/' + ${car.id} +'.png'}" width="40" height="40">
+							  </a>
+						  </td>
 						  <td th:text="${car.name}">
 						  <td th:text="${car.description}">
 						  <td th:text="${car.acquisitionDate}">
@@ -309,12 +308,6 @@
 		<table width="100%">
 			<tr>
 				<td width="50%">
-				 <div class="form-group row">
-				    <label for="idInsert" class="col-sm-2 col-form-label">Id:</label>
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="idInsert" name="id" placeholder="Id" disabled>
-				    </div>
-				  </div>
 				  <div class="form-group row">
 				    <label for="cartypeInsert" class="col-sm-2 col-form-label">Car Type:</label>
 				    <div class="col-sm-6">

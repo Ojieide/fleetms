@@ -152,11 +152,6 @@
         </a>
         <ul id="people-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/personnel}">
-              <i class="bi bi-circle"></i><span>Personnel</span>
-            </a>
-          </li>
-          <li>
             <a th:href="@{/clients}">
               <i class="bi bi-circle"></i><span>Clients</span>
             </a>
@@ -185,8 +180,8 @@
         </a>
         <ul id="HR-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/roles}">
-              <i class="bi bi-circle"></i><span>Roles</span>
+            <a th:href="@{/personnel}">
+              <i class="bi bi-circle"></i><span>Personnel</span>
             </a>
           </li>
           <li>
@@ -314,12 +309,6 @@
 			<tr>
 				<td width="50%">
 				
-				 <div class="form-group row">
-				    <label for="idInsert" class="col-sm-2 col-form-label">Id:</label>
-				    <div class="col-sm-6">
-				      <input type="text" class="form-control" id="idInsert" name="id" placeholder="Id" disabled>
-				    </div>
-				  </div>
 				  <div class="form-group row">
 				    <label for="nameInsert" class="col-sm-2 col-form-label">Name:</label>
 				    <div class="col-sm-6">
@@ -338,6 +327,18 @@
 				      <textarea class="form-control" id="addressInsert" name="address" placeholder="Address" rows="2"></textarea>
 				    </div>
 				  </div>
+				  <div class="form-group row">
+				    <label for="countryInsert" class="col-sm-2 col-form-label">Country:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="countryInsert" name="countryid">
+		        	       <option>-SELECT-</option>			    					  					    					    
+					       <option th:each="country : ${countries}"
+						        th:value="${country.id}"
+						        th:text="${country.name}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
 				</td>
 				<td width="50%" style="padding-left:10px">
 				  <div class="form-group row">
@@ -348,18 +349,6 @@
 					       <option th:each="state : ${states}"
 						        th:value="${state.id}"
 						        th:text="${state.name}">
-						   </option>
-					    </select>				    
-				    </div>
-				  </div>
-				  <div class="form-group row">
-				    <label for="countryInsert" class="col-sm-2 col-form-label">Country:</label>
-				    <div class="col-sm-6">
-					    <select class="form-control" id="countryInsert" name="countryid">
-		        	       <option>-SELECT-</option>			    					  					    					    
-					       <option th:each="country : ${countries}"
-						        th:value="${country.id}"
-						        th:text="${country.name}">
 						   </option>
 					    </select>				    
 				    </div>
@@ -442,6 +431,18 @@
 				      <textarea class="form-control" id="addressEdit" name="address" placeholder="Address" rows="2"></textarea>
 				    </div>
 				  </div>
+				  <div class="form-group row">
+				    <label for="countryEdit" class="col-sm-2 col-form-label">Country:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="countryEdit" name="countryid">
+		        	       <option>-SELECT-</option>			    					  					    					    
+					       <option th:each="country : ${countries}"
+						        th:value="${country.id}"
+						        th:text="${country.name}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
 				</td>
 				<td width="50%" style="padding-left:10px">
 				  <div class="form-group row">
@@ -452,18 +453,6 @@
 					       <option th:each="state : ${states}"
 						        th:value="${state.id}"
 						        th:text="${state.name}">
-						   </option>
-					    </select>				    
-				    </div>
-				  </div>
-				  <div class="form-group row">
-				    <label for="countryEdit" class="col-sm-2 col-form-label">Country:</label>
-				    <div class="col-sm-6">
-					    <select class="form-control" id="countryEdit" name="countryid">
-		        	       <option>-SELECT-</option>			    					  					    					    
-					       <option th:each="country : ${countries}"
-						        th:value="${country.id}"
-						        th:text="${country.name}">
 						   </option>
 					    </select>				    
 				    </div>
@@ -544,28 +533,28 @@
 				      <textarea class="form-control" id="addressDetails" name="address" placeholder="Address" rows="2" readonly></textarea>
 				    </div>
 				  </div>
-				</td>
-				<td width="50%" style="padding-left:10px">
 				  <div class="form-group row">
-				    <label for="stateDetails" class="col-sm-2 col-form-label" aria-readonly="true">State:</label>
+				    <label for="countryDetails" class="col-sm-2 col-form-label">Country:</label>
 				    <div class="col-sm-6">
-					    <select class="form-control" id="stateDetails" name="stateid" aria-readonly="true">
-		        	       <option>-SELECT-</option>			    					  					    					    
-					       <option th:each="state : ${states}"
-						        th:value="${state.id}"
-						        th:text="${state.name}">
-						   </option>
-					    </select>				    
-				    </div>
-				  </div>
-				  <div class="form-group row">
-				    <label for="countryDetails" class="col-sm-2 col-form-label" aria-readonly="true">Country:</label>
-				    <div class="col-sm-6">
-					    <select class="form-control" id="countryDetails" name="countryid" aria-readonly="true">
+					    <select class="form-control" id="countryDetails" name="countryid" disabled>
 		        	       <option>-SELECT-</option>			    					  					    					    
 					       <option th:each="country : ${countries}"
 						        th:value="${country.id}"
 						        th:text="${country.name}">
+						   </option>
+					    </select>				    
+				    </div>
+				  </div>
+				</td>
+				<td width="50%" style="padding-left:10px">
+				  <div class="form-group row">
+				    <label for="stateDetails" class="col-sm-2 col-form-label">State:</label>
+				    <div class="col-sm-6">
+					    <select class="form-control" id="stateDetails" name="stateid" disabled>
+		        	       <option>-SELECT-</option>			    					  					    					    
+					       <option th:each="state : ${states}"
+						        th:value="${state.id}"
+						        th:text="${state.name}">
 						   </option>
 					    </select>				    
 				    </div>

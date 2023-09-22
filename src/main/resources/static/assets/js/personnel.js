@@ -19,7 +19,7 @@ $('document').ready(function() {
 			$('#mobileEdit').val(personnel.mobile);
 			$('#othernameEdit').val(personnel.othername);		
 			$('#phoneEdit').val(personnel.phone);			
-			//$('#fupPhotoEdit').val(personnel.photo);			
+			$('#imageEdit').val(personnel.photo);			
 			$('#nationalidentitynumberEdit').val(personnel.nationalIdentityNumber);			
 			$('#stateEdit').val(personnel.stateid);	
 			$('#titleEdit').val(personnel.title);			
@@ -48,7 +48,7 @@ $('document').ready(function() {
 			$('#mobileDetails').val(personnel.mobile);
 			$('#othernameDetails').val(personnel.othername);		
 			$('#phoneDetails').val(personnel.phone);			
-			//$('#fupPhotoDetails').val(personnel.photo);			
+			$('#imageDetails').val(personnel.photo);			
 			$('#nationalidentitynumberDetails').val(personnel.nationalIdentityNumber);			
 			$('#stateDetails').val(personnel.stateid);	
 			$('#titleDetails').val(personnel.title);			
@@ -70,7 +70,7 @@ $('document').ready(function() {
 		event.preventDefault();
 		var href = $(this).attr('href');
 		$('#imageModal #personnelImage').attr('src', href);
-		$('#imageModal').modal();		
-});	
+		$('#imageModal').modal();
+	});	
 
 });

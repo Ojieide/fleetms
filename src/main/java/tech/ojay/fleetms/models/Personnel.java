@@ -27,9 +27,9 @@ public class Personnel extends Person {
 	private String username;
 	
 	@ManyToOne
-	@JoinColumn(name="role_id", insertable=false, updatable=false)
+	@JoinColumn(name="roleid", insertable=false, updatable=false)
 	private Role role;
-	private Long role_id;
+	private Long roleid;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Date hireDate;
@@ -74,12 +74,12 @@ public class Personnel extends Person {
 		this.role = role;
 	}
 
-	public Long getRole_id() {
-		return role_id;
+	public Long getRoleid() {
+		return roleid;
 	}
 
-	public void setRole_id(Long role_id) {
-		this.role_id = role_id;
+	public void setRole_id(Long roleid) {
+		this.roleid = roleid;
 	}
 
 	public Date getHireDate() {

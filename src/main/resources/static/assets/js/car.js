@@ -20,7 +20,8 @@ $('document').ready(function() {
 			$('#carmodelEdit').val(car.carmodelid);			
 			$('#carnumberEdit').val(car.carNumber);			
 			$('#carstatusEdit').val(car.carstatusid);			
-			$('#cartypeEdit').val(car.cartypeid);	
+			$('#cartypeEdit').val(car.cartypeid);
+			$('#imageEdit').val(car.photo);	
 		});			
 		$('#editModal').modal();		
 	});
@@ -44,7 +45,8 @@ $('document').ready(function() {
 			$('#carmodelDetails').val(car.carmodelid);			
 			$('#carnumberDetails').val(car.carNumber);			
 			$('#carstatusDetails').val(car.carstatusid);			
-			$('#cartypeDetails').val(car.cartypeid);	
+			$('#cartypeDetails').val(car.cartypeid);
+			$('#imageDetails').val(car.photo);	
 		});			
 		$('#detailsModal').modal();		
 	});	
@@ -54,5 +56,12 @@ $('document').ready(function() {
 		var href = $(this).attr('href');
 		$('#deleteModal #confirmDeleteBtn').attr('href', href);
 		$('#deleteModal').modal();		
-	});	
+	});
+	
+	$('.table #ImageButton').on('click',function(event) {
+		event.preventDefault();
+		var href = $(this).attr('href');
+		$('#ImageModal #carImage').attr('src', href);
+		$('#ImageModal').modal();		
+	});
 });

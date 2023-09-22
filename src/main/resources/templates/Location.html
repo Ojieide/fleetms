@@ -152,11 +152,6 @@
         </a>
         <ul id="people-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/personnel}">
-              <i class="bi bi-circle"></i><span>Personnel</span>
-            </a>
-          </li>
-          <li>
             <a th:href="@{/clients}">
               <i class="bi bi-circle"></i><span>Clients</span>
             </a>
@@ -185,8 +180,8 @@
         </a>
         <ul id="HR-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/roles}">
-              <i class="bi bi-circle"></i><span>Roles</span>
+            <a th:href="@{/personnel}">
+              <i class="bi bi-circle"></i><span>Personnel</span>
             </a>
           </li>
           <li>
@@ -305,10 +300,6 @@
       <div class="modal-body">
         <form th:action="@{/locations/insertNew}" method="post">
           <div class="form-group">
-            <label for="idInsert" class="col-form-label">Id:</label>
-            <input type="text" class="form-control" id="idInsert" name="id">
-          </div>
-          <div class="form-group">
 		    <label for="ddlCountryDetails" class="col-form-label">Country:</label>
 			    <select class="form-control" id="ddlCountryAdd" name="countryid">
 			       <option>-SELECT-</option>			    
@@ -423,7 +414,7 @@
           </div>
           <div class="form-group">
 		    <label for="ddlCountryDetails" class="col-form-label">Country:</label>
-			    <select class="form-control" id="ddlCountryDetails" name="countryid">
+			    <select class="form-control" id="ddlCountryDetails" name="countryid" disabled>
 			       <option>-SELECT-</option>			    
 			       <option th:each="country : ${countries}"
 				        th:value="${country.id}"
@@ -433,7 +424,7 @@
 		  </div>
           <div class="form-group">
 		    <label for="ddlStateDetails" class="col-form-label">State:</label>
-			    <select class="form-control" id="ddlStateDetails" name="stateid">
+			    <select class="form-control" id="ddlStateDetails" name="stateid" disabled>
 			       <option>-SELECT-</option>			    
 			       <option th:each="state : ${states}"
 				        th:value="${state.id}"
@@ -443,15 +434,15 @@
 		  </div>
           <div class="form-group">
             <label for="cityDetails" class="col-form-label">City:</label>
-            <input type="text" class="form-control" id="cityDetails" name="city">
+            <input type="text" class="form-control" id="cityDetails" name="city" readonly>
           </div>
           <div class="form-group">
             <label for="addressDetails" class="col-form-label">Address:</label>
-            <input type="text" class="form-control" id="addressDetails" name="address">
+            <input type="text" class="form-control" id="addressDetails" name="address" readonly>
           </div>
           <div class="form-group">
             <label for="detailsDetails" class="col-form-label">Details:</label>
-            <input type="text" class="form-control" id="detailsDetails" name="details">
+            <input type="text" class="form-control" id="detailsDetails" name="details" readonly>
           </div>
       </div>
       <div class="modal-footer">

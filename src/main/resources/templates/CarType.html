@@ -152,11 +152,6 @@
         </a>
         <ul id="people-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/personnel}">
-              <i class="bi bi-circle"></i><span>Personnel</span>
-            </a>
-          </li>
-          <li>
             <a th:href="@{/clients}">
               <i class="bi bi-circle"></i><span>Clients</span>
             </a>
@@ -185,8 +180,8 @@
         </a>
         <ul id="HR-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{/roles}">
-              <i class="bi bi-circle"></i><span>Roles</span>
+            <a th:href="@{/personnel}">
+              <i class="bi bi-circle"></i><span>Personnel</span>
             </a>
           </li>
           <li>
@@ -304,10 +299,6 @@
       </div>
       <div class="modal-body">
         <form th:action="@{/cartypes/insertNew}" method="post">
-          <div class="form-group">
-            <label for="idInsert" class="col-form-label">Id:</label>
-            <input type="text" class="form-control" id="idInsert" name="id">
-          </div>
           <div class="form-group">
             <label for="descriptionInsert" class="col-form-label">Description:</label>
             <input type="text" class="form-control" id="descriptionInsert" name="description">
